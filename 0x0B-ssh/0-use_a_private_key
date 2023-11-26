@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set the path to the private key file
-private_key_path="/alx-system_engineering-devops/0x0B-ssh/school"
+#private_key_path="/alx-system_engineering-devops/0x0B-ssh/school"
 
 # Use ssh with the specified private key to connect to the server
-ssh -i "$private_key_path" ubuntu@35.168.3.228
+ssh -i "/alx-system_engineering-devops/0x0B-ssh/school" ubuntu@35.168.3.228
