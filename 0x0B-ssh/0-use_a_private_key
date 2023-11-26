@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# connect to server web-01 as 'ubuntu', with your private saved as 'school'
+ssh -i ~/.ssh/school -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@35.168.3.228
+
