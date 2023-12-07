@@ -1,0 +1,48 @@
++ systemctl is-active --quiet nginx
++ echo 'Starting Nginx service...'
+Starting Nginx service...
++ systemctl start nginx
+Failed to start nginx.service: Access denied
+See system logs and 'systemctl status nginx.service' for details.
+++ grep -Eo '[^/]+$'
+++ grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+++ ip -4 addr show
++ active_ipv4_addresses='127.0.0.1
+10.247.79.169
+10.247.255.255'
++ for address in $active_ipv4_addresses
++ grep -q 127.0.0.1
++ grep :80
++ netstat -tlpn
+./0-nginx_likes_port_80: line 16: netstat: command not found
++ echo 'Nginx not listening on port 80 for address 127.0.0.1. Fixing...'
+Nginx not listening on port 80 for address 127.0.0.1. Fixing...
++ sed -i 's/listen       80 default_server;/listen       80 127.0.0.1 default_server;/g' /etc/nginx/sites-available/default
+sed: can't read /etc/nginx/sites-available/default: No such file or directory
++ systemctl reload nginx
+Failed to reload nginx.service: Access denied
+See system logs and 'systemctl status nginx.service' for details.
++ for address in $active_ipv4_addresses
++ grep -q 10.247.79.169
++ grep :80
++ netstat -tlpn
+./0-nginx_likes_port_80: line 16: netstat: command not found
++ echo 'Nginx not listening on port 80 for address 10.247.79.169. Fixing...'
+Nginx not listening on port 80 for address 10.247.79.169. Fixing...
++ sed -i 's/listen       80 default_server;/listen       80 10.247.79.169 default_server;/g' /etc/nginx/sites-available/default
+sed: can't read /etc/nginx/sites-available/default: No such file or directory
++ systemctl reload nginx
+Failed to reload nginx.service: Access denied
+See system logs and 'systemctl status nginx.service' for details.
++ for address in $active_ipv4_addresses
++ grep -q 10.247.255.255
++ grep :80
++ netstat -tlpn
+./0-nginx_likes_port_80: line 16: netstat: command not found
++ echo 'Nginx not listening on port 80 for address 10.247.255.255. Fixing...'
+Nginx not listening on port 80 for address 10.247.255.255. Fixing...
++ sed -i 's/listen       80 default_server;/listen       80 10.247.255.255 default_server;/g' /etc/nginx/sites-available/default
+sed: can't read /etc/nginx/sites-available/default: No such file or directory
++ systemctl reload nginx
+Failed to reload nginx.service: Access denied
+See system logs and 'systemctl status nginx.service' for details.
